@@ -3,9 +3,10 @@
   :url ""
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.4.0"]
+  :dependencies [[org.clojure/clojure "1.6.0"]
                  [clj-http "0.5.7"]
                  [cheshire "4.0.4"]
-                 [org.clojure/math.combinatorics "0.0.3"]]
+                 [org.clojure/math.combinatorics "0.0.3"]
+                 [org.clojure/tools.trace "0.7.8"]]
   :main  offline-4clojure.core
   )
