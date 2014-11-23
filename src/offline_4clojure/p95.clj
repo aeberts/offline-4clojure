@@ -7,39 +7,27 @@
   (:use clojure.tools.trace)
   (:use clojure.walk))
 
-(deftrace __
+(def __
 
-  (fn is-btree? [coll]
-    (let [is-tree-or-nil? #(or (nil? %) (= 3 (count %)))
-          node (first coll)
-          subtl (first (rest coll))
-          subtr (rest (rest coll))
-          result true]
-      (if (and (not (nil? node))
-               (is-tree-or-nil? subtl)
-               (is-tree-or-nil? subtr)))
+  (fn [s]
+    (let [valid-node? (fn [n] (cond
+                                (nil? n) true
+                                (and (sequential? n)
+                                     (and
+                                       (= 3 (count n))
+                                       (not-any? false? n)
+                                       (not (nil? (first n)))
+                                       (or (nil? (first (rest n))) (sequential? (first (rest n))))
+                                       (or (nil? (first (rest (rest n)))) (sequential? (first (rest (rest n))))))
+                                     ) true
+                                :else false)) ]
+      (if (not-any? false? (flatten s))
+        (every? true? (map valid-node? (tree-seq next rest s)))
+        false)
       )
     )
-)
 
-
-(deftrace __
-
-          (fn is-tree? [coll]
-            (let [value (first coll)
-                  left (first (rest coll))
-                  right (rest (rest coll))
-                  is-leaf? #((and (not (nil? value))
-                                  (not (seq? value))
-                                  (nil? right) (nil? left)))]
-              (if (is-leaf? coll) true
-                (do
-                  (if (and (seq? left) (not (nil? left))) (is-tree? left) false)
-                  (if (and (seq? right) (not (nil? right))) (is-tree? left) false)))))
-
-
-          )
-
+  )
 
 (deftest main-test []
   (are [soln] soln
@@ -60,15 +48,40 @@
 
 ))
 
+;austintaylor's solution:
+
+(fn [root]
+  (letfn [(tree? [t]
+                 (or (nil? t)
+                     (and (sequential? t)
+                          (= 3 (count t))
+                          (tree? (nth t 1))
+                          (tree? (nth t 2)))))]
+    (tree? root)))
+
+;dwelte's solution:
+
+(fn valid? [t]
+  (if (nil? t)
+    true
+    (and
+      (coll? t)
+      (= (count t) 3)
+      (valid? (second t))
+      (valid? (nth t 2)))))
+
+
+
 (def tree [1 [2 [4 [7]] [5]] [3 [6 [8] [9]]]])
-(def t1true '(:a (:b nil nil)))
+(def ttrue '(:a (:b nil nil) nil))
+(def t1false '(:a (:b nil nil)))
 (def t2true [1 nil [2 [3 nil nil] [4 nil nil]]])
 (def t3false [1 [2 nil nil] [3 nil nil] [4 nil nil]])
 (def t4false [1 [2 [3 [4 false nil] nil] nil] nil])
 (def t5false [2 [3 [4 false nil] nil] nil])
 (def t1 [3 nil nil])
 
-(deftrace valid-node? [n]
+(defn valid-node? [n]
           (cond
             (nil? n) true
             (and (sequential? n)
@@ -82,9 +95,20 @@
             :else false)
           )
 
-(trace-forms (clojure.walk/prewalk next t4false))
+(defn test-tree [n]
+  (if (not-any? false? (flatten n))
+    (every? true? (map valid-node? (tree-seq next rest n)))
+    false)
+  )
 
-(trace-forms (clojure.walk/prewalk #(and (valid-node? %)) t4false))
+(test-tree ttrue)
+(test-tree t3false)
+(test-tree t4false)
+(test-tree t5false)
+
+;(trace-forms (clojure.walk/prewalk next t4false))
+
+;(trace-forms (clojure.walk/prewalk #(and (valid-node? %)) t4false))
 
 ;(deftrace is-tree? [t]
 ;          (let [value (first t)
