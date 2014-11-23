@@ -6,11 +6,29 @@
 ;; tags - 
 ;; restricted - 
 (ns offline-4clojure.p97
-  (:use clojure.test))
+  (:use [clojure.test]
+        [clojure.tools.trace]))
 
-(def __
-;; your solution here
-)
+(defn pasc [lastr num k]
+  (let [n (- (dec num) k)
+        d (inc k)]
+    (* lastr (/ n d))))
+
+(defn __ [num]
+  (let [pasc (fn [lastr num k]
+               (let [n (- (dec num) k)
+                     d (inc k)]
+                 (* lastr (/ n d))))]
+    (loop [result [1] k 0]
+      (if (or
+            (= num 1)
+            (= k (dec num)))
+        result
+        (recur (conj result (pasc (last result) num k)) (inc k))
+        )
+      )
+    )
+  )
 
 (deftest main-test []
   (are [soln] soln
@@ -24,3 +42,16 @@
 (= (__ 11)
    [1 10 45 120 210 252 210 120 45 10 1])
 ))
+
+(defn breakpoint [in]
+  (println in))
+
+; _pcl's solution:
+;(fn [i]
+;  (reduce
+;    #(conj %1 (* (last %1) (/ (- i %2) %2)))
+;    [1] (range 1 i)))
+
+;; C(n,0) = 1
+;; C(n,k+1) = C(n,k) * (n - k) / (k + 1)
+
