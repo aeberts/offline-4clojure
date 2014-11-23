@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (take 3 (__ 3.14 int double)) [3.14 3 3.0])
 (= (take 5 (__ 3 #(- % 3) #(+ 5 %))) [3 0 5 2 7])

@@ -21,7 +21,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= #{"a" "ab" "abc"}
    (set (__ '{:states #{q0 q1 q2 q3}

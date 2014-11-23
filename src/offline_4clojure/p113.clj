@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= "1, 2, 3" (str (__ 2 1 3)))
 (= '(2 1 3) (seq (__ 2 1 3)))

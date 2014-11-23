@@ -6,10 +6,13 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [a c]
+    (set (for [a a c c] [a c])))
+
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ #{"ace" "king" "queen"} #{"&#9824;" "&#9829;" "&#9830;" "&#9827;"})
    #{["ace"   "&#9824;"] ["ace"   "&#9829;"] ["ace"   "&#9830;"] ["ace"   "&#9827;"]

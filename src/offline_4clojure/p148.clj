@@ -11,7 +11,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= 0 (__ 3 17 11))
 (= 23 (__ 10 3 5))

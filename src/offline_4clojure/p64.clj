@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= 15 (reduce __ [1 2 3 4 5]))
 (=  0 (reduce __ []))

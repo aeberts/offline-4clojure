@@ -6,10 +6,13 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+ (fn [v1 v2]
+   (reduce + (map * v1 v2))
+   )
+
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= 0 (__ [0 1 0] [1 0 0]))
 (= 3 (__ [1 1 1] [1 1 1]))

@@ -6,10 +6,20 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+  (fn [& args]
+    (cond
+      (every? true? args) false
+      (some true? args) true
+      (every? false? args) false))
 )
 
-(defn -main []
+(cons 4 [1 2 3])
+
+;amcnamara's solution:
+;
+;not=
+
+(deftest main-test []
   (are [soln] soln
 (= false (__ false false))
 (= true (__ true false))

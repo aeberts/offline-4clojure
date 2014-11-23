@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ [1 2 3]) 6)
 (= (__ (list 0 -2 5 5)) 8)

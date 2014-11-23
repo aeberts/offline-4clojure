@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__  "Have a nice day.")
    ["a" "day" "Have" "nice"])

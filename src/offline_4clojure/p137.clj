@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= [1 2 3 4 5 0 1] (__ 1234501 10))
 (= [0] (__ 0 11))

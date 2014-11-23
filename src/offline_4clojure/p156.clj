@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ 0 [:a :b :c]) {:a 0 :b 0 :c 0})
 (= (__ "x" [1 2 3]) {1 "x" 2 "x" 3 "x"})

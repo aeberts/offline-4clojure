@@ -17,7 +17,7 @@
 ;;<li>Minerals must have a minimum of three measures of area to be harvested</li>
 ;;<li>If no minerals can be harvested from the rock, your function should return nil</li>
 ;;</ul>
-;; tags - search:data-analysis
+;; tags - search:data-juggling
 ;; restricted - 
 (ns offline-4clojure.p127
   (:use clojure.test))
@@ -26,7 +26,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= 10 (__ [15 15 15 15 15]))
 ; 1111      1111

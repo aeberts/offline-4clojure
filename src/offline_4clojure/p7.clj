@@ -6,10 +6,10 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+[1 2 3 4]
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= __ (conj [1 2 3] 4))
 (= __ (conj [1 2] 3 4))

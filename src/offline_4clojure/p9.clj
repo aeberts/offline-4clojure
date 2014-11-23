@@ -7,9 +7,10 @@
 
 (def __
 ;; your solution here
+  2
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= #{1 2 3 4} (conj #{1 4 3} __))
 ))

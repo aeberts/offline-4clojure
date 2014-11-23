@@ -10,7 +10,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (false? (__ '(1 2 3 4 5)))
 (true? (__ "racecar"))

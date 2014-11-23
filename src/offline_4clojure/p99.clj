@@ -6,10 +6,14 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
-)
+  (fn [x y]
+    (->> (seq (str (* x y)))
+      (map #(Character/getNumericValue %))
+      )
+    )
+  )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ 1 1) [1])
 (= (__ 99 9) [8 9 1])

@@ -2,9 +2,7 @@
 ;; Create a function which accepts as input a boolean algebra function in the form of a set of sets, where the inner sets are collections of symbols corresponding to the input boolean variables which satisfy the function (the inputs of the inner sets are conjoint, and the sets themselves are disjoint... also known as canonical minterms).  Note:&nbsp;capitalized symbols represent truth, and lower-case symbols represent negation of the inputs.  Your function must return the minimal function which is logically equivalent to the input.
 ;;</br></br>
 ;;PS &mdash; You may want to give this a read before proceeding: <a href="http://en.wikipedia.org/wiki/K_map">K-Maps</a>
-;;</br>
-;;PPS &mdash; If you're interested in logic programming more generally, you should also check out: <a href="https://github.com/clojure/core.logic">core.logic</a>
-;; tags - boolean-logic:data-analysis
+;; tags - math:circuit-design
 ;; restricted - 
 (ns offline-4clojure.p140
   (:use clojure.test))
@@ -13,7 +11,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ #{#{'a 'B 'C 'd}
          #{'A 'b 'c 'd}

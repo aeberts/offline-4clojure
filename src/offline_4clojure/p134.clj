@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (true?  (__ :a {:a nil :b 2}))
 (false? (__ :b {:a nil :b 2}))

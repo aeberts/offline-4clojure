@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= __ (take 5 (iterate #(+ 3 %) 1)))
 ))

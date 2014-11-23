@@ -76,7 +76,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ '[[A B C D]
          [A C D B]

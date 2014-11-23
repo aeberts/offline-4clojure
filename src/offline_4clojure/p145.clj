@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= __ (for [x (range 40)
             :when (= 1 (rem x 4))]

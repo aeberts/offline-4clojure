@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (clojure.set/superset? __ #{2})
 (clojure.set/subset? #{1} __)

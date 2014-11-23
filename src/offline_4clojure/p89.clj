@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= true (__ [[:a :b]]))
 (= false (__ [[:a :a] [:b :b]]))

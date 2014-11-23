@@ -11,7 +11,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ :x [[:o :e :e] 
            [:o :x :o] 

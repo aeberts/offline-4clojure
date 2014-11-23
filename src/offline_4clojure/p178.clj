@@ -21,7 +21,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= :high-card (__ ["HA" "D2" "H3" "C9" "DJ"]))
 (= :pair (__ ["HA" "HQ" "SJ" "DA" "HT"]))

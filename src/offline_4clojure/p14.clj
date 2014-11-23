@@ -6,10 +6,12 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+8
+
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= __ ((fn add-five [x] (+ x 5)) 3))
 (= __ ((fn [x] (+ x 5)) 3))

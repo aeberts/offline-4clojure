@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= __ (filter #(> % 5) '(3 4 5 6 7)))
 ))

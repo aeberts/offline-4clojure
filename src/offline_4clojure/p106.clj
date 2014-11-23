@@ -14,7 +14,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= 1 (__ 1 1))  ; 1
 (= 3 (__ 3 12)) ; 3 6 12

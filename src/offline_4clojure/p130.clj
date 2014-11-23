@@ -31,7 +31,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= '(n)
    (__ 'n '(n)))

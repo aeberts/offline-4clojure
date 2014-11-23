@@ -6,10 +6,10 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+  4
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (- 10 (* 2 3)) __)
 ))

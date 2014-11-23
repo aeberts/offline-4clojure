@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (== (__ 2 3) 6)
 (== (__ 5 3 7) 105)

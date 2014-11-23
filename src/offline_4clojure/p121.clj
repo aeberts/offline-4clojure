@@ -15,7 +15,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= 2 ((__ '(/ a b))
       '{b 8 a 16}))

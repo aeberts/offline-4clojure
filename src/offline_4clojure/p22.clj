@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ '(1 2 3 3 1)) 5)
 (= (__ "Hello World") 11)

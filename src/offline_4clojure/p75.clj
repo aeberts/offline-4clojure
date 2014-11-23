@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ 1) 1)
 (= (__ 10) (count '(1 3 7 9)) 4)

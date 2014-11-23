@@ -5,13 +5,25 @@
 ;; tags - higher-order-functions:math
 ;; restricted - 
 (ns offline-4clojure.p135
-  (:use clojure.test))
+  (:use clojure.test clojure.tools.trace))
+
+(defmacro d[x] `(let [x# ~x] (println "dbg:" '~x "=" x#) x#))
 
 (def __
-;; your solution here
-)
+  (fn [& args]
+    (loop [col (rest args) result (first args)]
+      (if (seq col)
+        (recur (rest (rest col)) ((first col) result (first (rest col))))
+        result)
+      )
+    )
+  )
 
-(defn -main []
+; jbear's solution
+; (fn calc [init & exp]
+;  (reduce #(let [[f n] %2] (f %1 n)) init (partition 2 exp)))
+
+(deftest main-test []
   (are [soln] soln
 (= 7  (__ 2 + 5))
 (= 42 (__ 38 + 48 - 2 / 2))

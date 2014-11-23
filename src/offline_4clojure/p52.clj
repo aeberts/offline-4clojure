@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= [2 4] (let [[a b c d e f g] (range)] __))
 ))

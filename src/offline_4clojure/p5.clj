@@ -7,10 +7,17 @@
 
 (def __
 ;; your solution here
+  '(1 2 3 4)
 )
 
-(defn -main []
-  (are [soln] soln
-(= __ (conj '(2 3 4) 1))
-(= __ (conj '(3 4) 2 1))
-))
+;(deftest main-test []
+;  (are [soln] soln
+;(= __ (conj '(2 3 4) 1))
+;(= __ (conj '(3 4) 2 1))
+;))
+
+(deftest main-test []
+                   (are [soln] soln
+                               (= __ (conj '(2 3 4) 1))
+                               (= __ (conj '(3 4) 2 1))
+                               ))

@@ -6,10 +6,26 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [s]
+    (let [two-powers (lazy-seq (iterate #(* 2 %) 1))]
+      (->> (vec s)
+           (map #(String/valueOf %))
+           (map read-string )
+           (reverse)
+           (map * two-powers)
+           (reduce +)
+           )
+      )
+    )
 )
 
-(defn -main []
+; dwelte's solution
+; #(Integer/parseInt % 2)
+;
+; parseInt takes string and the radix (base) and returns the integer in base 10.
+
+(deftest main-test []
   (are [soln] soln
 (= 0     (__ "0"))
 (= 7     (__ "111"))

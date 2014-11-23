@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= 10 (let __ (+ x y)))
 (= 4 (let __ (+ y z)))

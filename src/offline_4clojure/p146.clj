@@ -13,7 +13,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ '{a {p 1, q 2}
          b {m 3, n 4}})

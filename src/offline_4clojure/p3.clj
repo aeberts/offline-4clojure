@@ -6,10 +6,10 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+  "HELLO WORLD"
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= __ (.toUpperCase "hello world"))
 ))

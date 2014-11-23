@@ -12,7 +12,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ 1) [1])
 (= (map __ (range 1 6))

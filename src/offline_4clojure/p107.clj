@@ -8,10 +8,26 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [n]
+    #(
+      (fn exp [x n]
+        (loop [acc 1 n n]
+          (if (zero? n) acc
+            (recur (* x acc) (dec n)))))
+      % n)
+    )
 )
 
-(defn -main []
+;(fn [n]
+;  #(Math/pow % n))
+
+(fn exp [x n]
+  (loop [acc 1 n n]
+    (if (zero? n) acc
+      (recur (* x acc) (dec n)))))
+
+(deftest main-test []
   (are [soln] soln
 (= 256 ((__ 2) 16),
        ((__ 8) 2))

@@ -16,7 +16,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= true  (__ ["M   C"]))
 (= false (__ ["M # C"]))

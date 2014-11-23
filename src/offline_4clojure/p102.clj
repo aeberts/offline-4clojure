@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ "something") "something")
 (= (__ "multi-word-key") "multiWordKey")

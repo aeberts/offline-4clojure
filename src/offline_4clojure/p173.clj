@@ -11,7 +11,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= 3
   (let [[__] [+ (range 3)]] (apply __))

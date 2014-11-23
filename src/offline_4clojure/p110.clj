@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= [[1 1] [2 1] [1 2 1 1]] (take 3 (__ [1])))
 (= [3 1 2 4] (first (__ [1 1 1 4 4])))

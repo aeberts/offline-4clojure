@@ -13,7 +13,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (str '__) (__))
 ))

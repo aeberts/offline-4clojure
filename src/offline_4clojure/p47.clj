@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (contains? #{4 5 6} __)
 (contains? [1 1 1 1 1] __)

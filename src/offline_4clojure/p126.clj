@@ -6,10 +6,10 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
-)
+java.lang.Class
+  )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (let [x __]
   (and (= (class x) x) x))

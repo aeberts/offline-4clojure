@@ -1,7 +1,6 @@
 (ns offline-4clojure.core
   (:require [clj-http.client :as http]
             [clojure.string :as string]
-
             )
   (:use [cheshire.core]
         [clojure.pprint]))
@@ -20,7 +19,7 @@
     (strip-cr (string/join "\n" tests))))
 
 (defn wrap-in-are [tests]
-  (str "(defn -main []\n  (are [soln] soln\n"
+  (str "(deftest main-test []\n  (are [soln] soln\n"
        tests
        "\n))\n"))
 

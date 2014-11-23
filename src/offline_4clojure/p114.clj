@@ -15,7 +15,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= [2 3 5 7 11 13]
    (__ 4 #(= 2 (mod % 3))

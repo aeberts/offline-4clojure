@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= :map (__ {:a 1, :b 2}))
 (= :list (__ (range (rand-int 20))))

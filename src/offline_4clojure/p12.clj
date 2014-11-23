@@ -6,10 +6,10 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+ 3
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= __ (first '(3 2 1)))
 (= __ (second [2 3 4]))

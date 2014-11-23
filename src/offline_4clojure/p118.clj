@@ -3,13 +3,44 @@
 ;; tags - core-seqs
 ;; restricted - map:map-indexed:mapcat:for
 (ns offline-4clojure.p118
-  (:use clojure.test))
+  (:use clojure.test)
+  (:use clojure.tools.trace))
 
 (def __
-;; your solution here
-)
+(fn [fun coll]
+  (let [step (fn [f c]
+               (when-let [s (seq c)]
+                 (cons (f (first s)) (mapz f (rest s)))))]
+    (lazy-seq (step fun coll))))
 
-(defn -main []
+)
+; dwelte's solution
+;(fn nmap [f xs]
+;  (if (empty? xs)
+;    '()
+;    (lazy-seq (cons (f (first xs)) (nmap f (rest xs))))))
+
+
+;; My working solution on 4clojure (inspired by filter
+
+;(fn mapz [fun coll]
+;  (let [step (fn [f c]
+;               (when-let [s (seq c)]
+;                 (cons (f (first s)) (mapz f (rest s)))))]
+;    (lazy-seq (step fun coll))))
+
+
+(defn mapz
+  "Applies func to each item in coll. Aka map"
+  [fun coll]
+  (let [step (fn [f c]
+               (when-let [s (seq c)]
+                 (cons (f (first s)) (mapz f (rest s)))))]
+    (lazy-seq (step fun coll))))
+
+(mapz inc [2 3 4 5 6])
+
+(deftest main-test []
   (are [soln] soln
 (= [3 4 5 6 7]
    (__ inc [2 3 4 5 6]))

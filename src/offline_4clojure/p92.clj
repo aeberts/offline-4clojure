@@ -11,7 +11,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= 14 (__ "XIV"))
 (= 827 (__ "DCCCXXVII"))

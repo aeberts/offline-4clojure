@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ 3) '(1 1 2))
 (= (__ 6) '(1 1 2 3 5 8))

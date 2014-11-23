@@ -9,7 +9,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= (__ "kitten" "sitting") 3)
 (= (__ "closure" "clojure") (__ "clojure" "closure") 1)

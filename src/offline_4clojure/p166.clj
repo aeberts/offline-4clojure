@@ -15,7 +15,7 @@
 ;; your solution here
 )
 
-(defn -main []
+(deftest main-test []
   (are [soln] soln
 (= :gt (__ < 5 1))
 (= :eq (__ (fn [x y] (< (count x) (count y))) "pear" "plum"))

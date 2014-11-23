@@ -6,10 +6,19 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
-)
+  ;; your solution here
+  (fn reiter [f a]
+    (cons a (lazy-seq (reiter f (f a))))))
 
-(defn -main []
+;(defn iterate
+;  "Returns a lazy sequence of x, (f x), (f (f x)) etc. f must be free of side-effects"
+;  {:added "1.0"
+;   :static true}
+;  [f x] (cons x (lazy-seq (iterate f (f x)))))
+
+;; Why is cons a necessary?? -> unroll this one.
+
+(deftest main-test []
   (are [soln] soln
 (= (take 5 (__ #(* 2 %) 1)) [1 2 4 8 16])
 (= (take 100 (__ inc 0)) (take 100 (range)))
