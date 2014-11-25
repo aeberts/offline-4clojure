@@ -11,6 +11,16 @@
 
 (def __
 ;; your solution here
+
+  (fn [s]
+    (let [suits {:D :diamond, :H :heart, :C :club, :S :spade }
+          ranks {:2 0, :3 1, :4 2, :5 3, :6 4, :7 5, :8 6, :9 7, :T 8, :J 9, :Q 10, :K 11, :A 12}
+          suit (keyword (String/valueOf (nth s 0)))
+          rank (keyword (String/valueOf (nth s 1)))
+          result {:suit (suit suits) :rank (rank ranks)}]
+      result
+      )
+    )
 )
 
 (deftest main-test []
@@ -22,3 +32,15 @@
                    '[S2 S3 S4 S5 S6 S7
                      S8 S9 ST SJ SQ SK SA]))
 ))
+
+; austintaylor's solution
+
+(fn [[s r]]
+  { :suit ({\D :diamond \H :heart \C :club \S :spade} s)
+   :rank (.indexOf (seq "23456789TJQKA") r)})
+
+; darren's solution
+
+(fn [[s r]]
+  {:suit ((zipmap "DHCS" [:diamond :heart :club :spade]) s)
+   :rank ((zipmap "23456789TJQKA" (range)) r)})
