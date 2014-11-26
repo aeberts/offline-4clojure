@@ -3,11 +3,26 @@
 ;; tags - math
 ;; restricted - 
 (ns offline-4clojure.p120
-  (:use clojure.test))
+  (:use clojure.test)
+  (:use clojure.tools.trace))
 
-(def __
-;; your solution here
-)
+(deftrace __
+          (fn
+            [coll]
+            (let [expl (fn [number]
+                         (map #(Character/digit % 10) (str number)))
+                  scd (fn [s]
+                        (->> s
+                             (map #(* % %))
+                             (reduce +)))
+                  ssd? (fn [n]
+                         (if (< n (scd (expl n))) true
+                                                  false))]
+              (->> coll
+                   (filter ssd?)
+                   (count))))
+
+          )
 
 (deftest main-test []
   (are [soln] soln
