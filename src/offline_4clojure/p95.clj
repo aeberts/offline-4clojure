@@ -70,6 +70,15 @@
       (valid? (second t))
       (valid? (nth t 2)))))
 
+; some other guy's solution
+;; https://github.com/monodeldiablo/4clojure/blob/master/95.clj
+
+(def other__
+  (fn tree? [n]
+    (or (nil? n)
+        (and (coll? n)
+             (= 3 (count n))
+             (every? tree? (rest n))))))
 
 
 (def tree [1 [2 [4 [7]] [5]] [3 [6 [8] [9]]]])
