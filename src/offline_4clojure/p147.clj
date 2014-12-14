@@ -9,8 +9,38 @@
 ;; Some random addition
 
 (def __
-;; your solution here
+
+  (fn [coll]
+    (loop [result [1] k 0]
+      (if (or
+            (= num 1)
+            (= k (dec num)))
+        result
+        (recur (conj result (pasc (last result) num k)) (inc k))
+        )
+      )
+    )
+
 )
+
+; Basic solution:
+;(map #( + (first %1) (second %1) ) (partition 2 1 [1 2 1]))
+
+; Now, just make it a lazy sequence and recurr ad infinitum
+
+; "for" is lazy -> how to create with for?
+
+(def foo
+  (fn [coll]
+    (letfn [(pasc [c] (-> c
+                          (partition 2 1 )
+                          (map #( +' (first %1) (second %2)) )
+                          ))] ))
+
+  )
+
+
+
 
 (deftest main-test []
   (are [soln] soln
