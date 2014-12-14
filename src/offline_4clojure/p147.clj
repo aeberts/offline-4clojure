@@ -6,6 +6,8 @@
 (ns offline-4clojure.p147
   (:use clojure.test))
 
+;; Some random addition
+
 (def __
 ;; your solution here
 )
