@@ -9,6 +9,17 @@
 ;; your solution here
 )
 
+(fn tree? [x]
+  (or
+    (nil? x)
+    (and
+      (sequential? x)
+      (= 3 (count x))
+      (not (sequential? (first x)))
+      (tree? (second x))
+      (tree? (nth x 2))
+      )))
+
 (deftest main-test []
   (are [soln] soln
 (= (__ '(:a (:b nil nil) (:b nil nil))) true)
