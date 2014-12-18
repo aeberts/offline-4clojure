@@ -4,42 +4,53 @@
 ;; tags - seqs
 ;; restricted - 
 (ns offline-4clojure.p147
-  (:use clojure.test))
-
-;; Some random addition
-
-(def __
-
-  (fn [coll]
-    (loop [result [1] k 0]
-      (if (or
-            (= num 1)
-            (= k (dec num)))
-        result
-        (recur (conj result (pasc (last result) num k)) (inc k))
-        )
-      )
-    )
-
-)
+  (:use clojure.test)
+  (:use clojure.tools.trace))
 
 ; Basic solution:
 ;(map #( + (first %1) (second %1) ) (partition 2 1 [1 2 1]))
 
-; Now, just make it a lazy sequence and recurr ad infinitum
+(def __                                                   ;Works on only (as->)
 
-; "for" is lazy -> how to create with for?
-
-(def foo
-  (fn [coll]
-    (letfn [(pasc [c] (-> c
-                          (partition 2 1 )
-                          (map #( +' (first %1) (second %2)) )
-                          ))] ))
-
+  (fn [v]
+    (iterate
+      (fn [coll]
+        (let [pasc (fn [c] (->> c
+                                (partition 2 1 )
+                                (map #(+' (first %1) (second %1)))))]
+          (conj (vec (conj (pasc coll) (first coll))) (last coll))
+          ))
+      v))
   )
 
+;; dwelte's solutions
+(fn [i]
+  (iterate
+    (fn [v]
+      (let [v1 (concat v [0])
+            v2 (concat [0] v)]
+        (map + v1 v2))) i))
 
+;; jbear's solution
+;
+; iterate #(concat [(first %)] (map +' % (rest %)) [(last %)])
+
+
+(def B
+  (fn [coll]
+    (letfn [(pasc [c] (as-> coll c
+                            (partition 2 1 c)
+                            (map #( +' (first %1) (second %1)) c )
+                            (conj c (first coll))
+                            (conj (vec c) (last coll))))]
+      (pasc coll)
+      )))
+
+;(take 5 (iterate A [1]))
+(take 5 (__ [2 3 2]))
+(take 5 (B [1]))
+
+(take 5 (iterate #(conj % (inc (last %))) [1]))
 
 
 (deftest main-test []
