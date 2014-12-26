@@ -13,11 +13,17 @@
 ;; tags - set-theory
 ;; restricted - 
 (ns offline-4clojure.p153
-  (:use clojure.test))
+  (:use clojure.test)
+  (:use clojure.math.combinatorics))
 
 (def __
 ;; your solution here
 )
+
+(defn disjoint? [s1 s2]
+  (nil? (seq (filter s1 s2))))
+
+(every? true? (map #(disjoint? (nth % 0) (nth % 1)) (combinations ss2 2)))
 
 (deftest main-test []
   (are [soln] soln
