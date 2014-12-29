@@ -14,16 +14,31 @@
 ;; restricted - 
 (ns offline-4clojure.p153
   (:use clojure.test)
-  (:use clojure.math.combinatorics))
-
-(def __
-;; your solution here
-)
+  (:require [clojure.math.combinatorics :as combo]))
 
 (defn disjoint? [s1 s2]
   (nil? (seq (filter s1 s2))))
 
-(every? true? (map #(disjoint? (nth % 0) (nth % 1)) (combinations ss2 2)))
+(def __zand
+  (fn [c]
+    (every? true? (map #(disjoint? (nth % 0) (nth % 1)) (combo/combinations c 2))))
+  )
+
+(def __other
+
+  (fn [ss]
+          (= (apply + (map count ss))
+             (count (reduce (fn [acc s] (into acc s))
+                            #{} ss))))
+  )
+
+
+(def __
+
+  (fn [ss]
+    (apply distinct? (mapcat seq ss)))
+
+  )
 
 (deftest main-test []
   (are [soln] soln
@@ -67,3 +82,7 @@
          #{, , , #_, , empty?}})
    false)
 ))
+
+
+
+
