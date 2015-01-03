@@ -5,7 +5,8 @@
 (ns offline-4clojure.p96
   (:use clojure.test)
   (:use clojure.tools.trace)
-  (:use clojure.walk))
+  (:require [clojure.walk :as w])
+  (:require [clojure.zip :as z]))
 
 
 ;; Approach: invert the right branch of the tree and compare left and right branches with =. If inverted left and right trees are =, the tree is symmetrical.
@@ -15,12 +16,11 @@
 
   )
 
-
 (defn invert-bad [c]
   (if (sequential? c)
     (cons (first c) (conj
-                      (invert (nth 2 c))
-                      (invert (nth 1 c))) )
+                      (invert-bad (nth 2 c))
+                      (invert-bad (nth 1 c))) )
   c))
 
 (defn ^:dynamic seq-reverse [coll]
@@ -40,11 +40,16 @@
 (defn dRev [lst]
   (clojure.walk/postwalk #(if (seq? %) (reverse %) %) lst))
 
+(defn ptree [lst]
+  (clojure.walk/postwalk #(if (seq? %) (println %) (println %)) lst))
+
 (defn invert [coll]
   (clojure.walk/postwalk #(if (seq? %)
                            (cons (first %) (conj (nth 2 %) (nth 1 %))) %) coll))
 
-(invert ss1)
+(ptree ss1)
+
+;(invert ss1)
 
 (defn ^:dynamic basic [coll]
   (loop [[r & more :as all] (seq coll)
