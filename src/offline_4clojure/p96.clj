@@ -11,10 +11,25 @@
 
 ;; Approach: invert the right branch of the tree and compare left and right branches with =. If inverted left and right trees are =, the tree is symmetrical.
 ;; to invert a tree: swap the left and right branches of the tree and descend into the sub branches.
+;;
+;; Figure out how to get clojure.walk to yield nodes and children i.e. [3 [4 [ 5 nil nil] [ 6 nil nil]] nil ]
+;;
 
-(def __
+(def ss [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]])
 
-  )
+(w/postwalk #(if (sequential? %) (-> %  (conj (first %)) (conj (nth % 2)) (conj (nth % 1))) % ) ss)
+
+(defn flip-kids
+  [c]
+  (assoc c 2 (nth c 1) 1 (nth c 2)))
+
+(w/postwalk #(if (sequential? %) (flip-kids %) % ) ss)
+
+(w/postwalk #(if (sequential? %) (assoc % 2 (nth % 1) 1 (nth % 2)) % ) ss)
+
+
+(flip-kids [5 nil 1])
+
 
 (defn invert-bad [c]
   (if (sequential? c)
@@ -86,6 +101,25 @@
 ;      (not (sequential? (first x)))
 ;      (tree? (second x))
 ;      (tree? (nth x 2)))))
+
+(def __
+
+  (fn [coll]
+    (let [vcoll (clojure.walk/postwalk #(if (seq? %) (vec %) %) coll )
+          lb (nth vcoll 1)
+          rb (nth vcoll 2)
+          invertrb (clojure.walk/postwalk #(if (sequential? %) (assoc % 2 (nth % 1) 1 (nth % 2)) % ) rb)]
+      (if (= lb invertrb)
+        true
+        false)
+      )
+    )
+
+  )
+
+
+
+(__ '(:a (:b nil nil) (:b nil nil)))
 
 (deftest main-test []
                    (are [soln] soln
