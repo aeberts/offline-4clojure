@@ -7,11 +7,61 @@
 ;; tags - seqs:maps
 ;; restricted - 
 (ns offline-4clojure.p146
-  (:use clojure.test))
+  (:use clojure.test)
+  (:use clojure.tools.trace))
+
+
+(def c '{a {p 1, q 2}
+        b {m 3, n 4}})
+
+;(for [all '{a {p 1, q 2}
+;          b {m 3, n 4}}
+;      :let [k (nth all 0)
+;            vm (nth all 1)
+;            vmk (keys vm)]]
+;  ;{:k k, :vm vm, :vmk vmk}
+;  (for [y vmk]
+;    [k y] (vm y)
+;    )
+;  )
+
+;(def foo
+;  (fn [[k m]]
+;    (for [[k2 v2] m]
+;      (concat [k k2] [v2])
+;      ;{:k2 k2 :v2 v2}
+;      )
+;    )
+;  )
+;
+;(def foo2
+;  (fn [[k m]]
+;    (for [k2 (keys m)
+;          :let [v2 (m k2)]]
+;      ;{:m m :k k :k2 k2 :v2 v2}
+;      [[k k2], v2]
+;      )
+;    )
+;  )
+;
+;(into {} (mapcat foo2 c))
 
 (def __
-;; your solution here
-)
+
+  (fn [coll]
+
+    (let [foo (fn [[k m]]
+                (for [k2 (keys m)
+                      :let [v2 (m k2)]]
+                  [[k k2], v2]))]
+
+      (into {} (mapcat foo coll))
+
+      )
+    )
+
+  )
+
 
 (deftest main-test []
   (are [soln] soln
