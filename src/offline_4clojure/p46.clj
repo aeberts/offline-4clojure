@@ -6,8 +6,14 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [f]
+    (fn [a b]
+      (f b a)
+      ))
+
 )
+
 
 (deftest main-test []
   (are [soln] soln
