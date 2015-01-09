@@ -6,8 +6,25 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [coll]
+    (let [ints (vec (filter integer? coll))
+          kws (vec (filter keyword? coll))
+          strs (vec (filter string? coll))
+          vs (vec (filter vector? coll))
+          all (filter #(not (empty? %)) [ints kws strs vs])]
+      (into #{} all)
+      )
+    )
+
 )
+
+; austin taylors better solution:
+;(fn [s]
+;  (vals (group-by type s)))
+
+
+(__ [1 :a 2 :b 3 :c])
 
 (deftest main-test []
   (are [soln] soln
