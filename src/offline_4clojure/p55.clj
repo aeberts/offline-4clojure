@@ -6,7 +6,16 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [coll]
+    (let [scoll (group-by identity coll)
+          fmap (fn [m f] (into {} (for [[k v] m] [k (f v)])))]
+
+      (fmap scoll count)
+
+      )
+    )
+
 )
 
 (deftest main-test []

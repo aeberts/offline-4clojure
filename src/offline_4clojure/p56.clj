@@ -3,11 +3,45 @@
 ;; tags - seqs:core-functions
 ;; restricted - distinct
 (ns offline-4clojure.p56
-  (:use clojure.test))
+  (:use clojure.test)
+  (:use clojure.tools.trace))
+
+(defmacro dbg[x] `(let [x# ~x] (println '~x "=" x#) x#))
 
 (def __
-;; your solution here
+
+(fn [coll]
+  (loop [c coll seen []]
+    (if (empty? c)
+      seen
+      (if (some #{(first c)} seen)
+        (recur (rest c) seen)
+        (recur (rest c) (conj seen (first c)))))
+    )
+  )
 )
+;
+;(defn foo [coll]
+;  (loop [c coll seen []]
+;    (if (empty? c)
+;      seen
+;      (if (contains? seen (first c))
+;        (recur (rest c) seen)
+;        (recur (rest c) (conj seen (first c)))))
+;    )
+;  )
+
+
+;(def try2
+;  (fn [coll]
+;    (->> coll
+;         (into #{})
+;         (sort)
+;         (vec))
+;    )
+;  )
+
+;(__ [1 2 1 3 1 2 4])
 
 (deftest main-test []
   (are [soln] soln
