@@ -16,6 +16,8 @@
 
 ; jbear's solution:
 ; #(->> % (re-seq #"[A-Za-z]+") (sort-by (fn [s] (.toLowerCase s))))
+;
+;
 
 (deftest main-test []
   (are [soln] soln
