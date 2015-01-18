@@ -6,8 +6,16 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [s]
+    (let [ws (sort-by clojure.string/upper-case (clojure.string/split s #"\s"))
+          cws (map (fn [w] (apply str (remove #(not (Character/isLetter %)) w ))) ws )]
+      (vec cws)))
+
 )
+
+; jbear's solution:
+; #(->> % (re-seq #"[A-Za-z]+") (sort-by (fn [s] (.toLowerCase s))))
 
 (deftest main-test []
   (are [soln] soln

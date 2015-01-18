@@ -6,7 +6,13 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [c coll]
+    (loop [a (list (take c coll)) rem (drop c coll)]
+      (if (< (count rem) c )
+        a
+        (recur (concat a (list (take c rem))) (drop c rem)))))
+
 )
 
 (deftest main-test []
