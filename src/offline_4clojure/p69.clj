@@ -7,17 +7,18 @@
 
 (def __
 
-(fn [f & maps]
-  {:f f :maps maps :mapstype (type maps) :first (first maps)}
-  )
-
+  (fn [f & maps]
+    (let [merge-elem (fn [m e]
+                       (let [k (key e) v (val e)]
+                         (if (contains? m k)
+                           (assoc m k (f (get m k) v))
+                           (assoc m k v))))
+          merge2 (fn [m1 m2]
+                   (reduce merge-elem m1 (seq m2)))]
+      (reduce merge2 maps)
+      )
+    )
 )
-
-;Notes:
-;
-; (reduce #(assoc % (key %2) (val %2)) [{:a 1 :b 2} [:a 3]])
-; (map #(print {:item %, :type1 (type %)}) [{:a 1 :b 2} [:a 3]])
-;
 
 (deftest main-test []
   (are [soln] soln
