@@ -6,8 +6,14 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [n]
+    (let [divisors (fn [n] (filter (comp zero? (partial rem n)) (range 1 n)))]
+      (= n (apply + (divisors n)))))
+
 )
+
+(__ 7)
 
 (deftest main-test []
   (are [soln] soln
