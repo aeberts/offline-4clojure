@@ -6,8 +6,27 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [v]
+    (let [r0 (v 0)
+          r1 (v 1)
+          r2 (v 2)
+          c0 (vector (r0 0) (r1 0) (r2 0))
+          c1 (vector (r0 1) (r1 1) (r2 1))
+          c2 (vector (r0 2) (r1 2) (r2 2))
+          d1 (vector (r0 0) (r1 1) (r2 2))
+          d2 (vector (r2 0) (r1 1) (r0 2))
+          ev [r0 r1 r2 c0 c1 c2 d1 d2]
+          all-same? (fn [v] (apply = v))
+          all-empty? (fn [v] (every? (fn [i] (= :e i)) v))
+          fv (filter (fn [v] (and (all-same? v) (not (all-empty? v)))) ev)
+          ]
+      (first (first (seq fv)))
+      )
+    )
+
 )
+
 
 (deftest main-test []
   (are [soln] soln
