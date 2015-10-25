@@ -21,7 +21,6 @@
               (->> coll
                    (filter ssd?)
                    (count))))
-
           )
 
 (deftest main-test []

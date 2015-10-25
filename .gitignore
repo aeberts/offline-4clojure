@@ -10,5 +10,6 @@ pom.xml
 .lein-plugins
 .nrepl-port
 .lein-repl-history
-offline_4clojure.iml
+offline-4clojure.iml
 .idea/*
+/projectFilesBackup

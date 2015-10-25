@@ -6,8 +6,17 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn is-happy? [n]
+    (letfn [(square [x] (* x x))
+            (explode [i] (map #(Character/getNumericValue %) (str i)))
+            (happy [y] (apply + (map square (explode y)) ))]
+      (cond (= 1 (happy n)) true
+            (= 4 (happy n)) false
+            :else (is-happy? (happy n))
+            )))
 )
+
 
 (deftest main-test []
   (are [soln] soln
