@@ -6,12 +6,18 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [s]
+    (-> s
+        (clojure.string/replace #"-\w" #(str (.toUpperCase %1)))
+        (clojure.string/replace #"-" "")
+        ))
+
 )
 
 (deftest main-test []
   (are [soln] soln
-(= (__ "something") "something")
-(= (__ "multi-word-key") "multiWordKey")
-(= (__ "leaveMeAlone") "leaveMeAlone")
-))
+    (= (__ "something") "something")
+    (= (__ "multi-word-key") "multiWordKey")
+    (= (__ "leaveMeAlone") "leaveMeAlone")
+    ))
