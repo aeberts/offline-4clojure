@@ -6,8 +6,70 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
-)
+
+(fn [n]
+  (let [expl (map #(Character/getNumericValue %) (str n))
+        lhs  (if (even? (count expl)) (take (/ (count expl) 2) expl) (take (int (Math/floor (double (/ (count expl) 2)))) expl))
+        rhs  (if (even? (count expl)) (drop (/ (count expl) 2) expl) (drop (int (Math/ceil (double (/ (count expl) 2)))) expl))]
+    (if (= (reduce + lhs) (reduce + rhs))
+      true
+      false)))
+
+  )
+
+(defn lhs [expl]
+  (if (even? (count expl)) (take (/ (count expl) 2) expl) (take (int (Math/floor (dec (/ (count expl) 2)))) expl))
+  )
+
+(defn rhs [expl]
+  (if (even? (count expl)) (drop (/ (count expl) 2) expl) (drop (int (Math/floor (inc (/ (count expl) 2)))) expl))
+  )
+
+(rhs [0])
+(rhs [0 1 2 3])
+(rhs [0 1 2 3 4 5])
+(rhs [9 8 7 4 3 2 0 9 8 7 4 3 2])
+(lhs [0])
+(lhs [0 1])
+(lhs [0 1 2])
+(lhs [0 1 2 3])
+(lhs [9 8 0 9 8])
+(lhs [0 1 2 3 4 5])
+(lhs [9 8 7 4 3 2 0 9 8 7 4 3 2])
+
+
+;; austintaylor's solution:
+(fn [x]
+  (let [digits (map #(Integer/parseInt (str %)) (str x))
+        half (int (/ (count digits) 2))
+        left (reduce + (take half digits))
+        right (reduce + (take half (reverse digits)))]
+    (= left right)))
+
+;; amcnamara's solution:
+#(-> % str count (/ 2) ((juxt take take-last) (str %)) (->> (map sort) (reduce =)))
+
+;; silverio's solution
+#(let [s ((fn digits [n]
+            (if (pos? n) (cons (mod n 10) (digits (quot n 10))))) %)
+       k (/ (count s) 2)
+       r (reverse s)]
+  (= (reduce + (take k s)) (reduce + (take k r))))
+
+
+;; jbear's solution
+(fn [n]
+  (let [ds (map int (str n))]
+    (zero? (reduce + (map - (take (quot (count ds) 2) ds) (reverse ds))))))
+
+;; jafingerhut's solution
+
+(fn [n]
+  (let [digits (map #(- (int %) (int \0)) (str n))
+        len (count digits)
+        half (quot len 2)]
+    (= (apply + (take half digits))
+       (apply + (drop (- len half) digits)))))
 
 (deftest main-test []
   (are [soln] soln
