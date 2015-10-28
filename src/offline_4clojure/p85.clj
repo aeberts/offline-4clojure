@@ -3,11 +3,26 @@
 ;; tags - set-theory
 ;; restricted - 
 (ns offline-4clojure.p85
-  (:use clojure.test))
+  (:use clojure.test)
+  (:require [clojure.math.combinatorics]))
+
+;; Hints if necessary: http://stackoverflow.com/questions/20914026/all-subsets-of-a-set-in-clojure
 
 (def __
-;; your solution here
+
 )
+
+(defn powerset [s]
+  (clojure.math.combinatorics/subsets s)
+  )
+
+;; Works here but not on 4Clojure
+;; Question is: how to implmentent subsets?
+
+;(fn [s]
+;  (set (map set (clojure.math.combinatorics/subsets s))))
+
+(set (map set (clojure.math.combinatorics/subsets #{1 2 3})))
 
 (deftest main-test []
   (are [soln] soln
