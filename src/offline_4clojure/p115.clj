@@ -6,8 +6,26 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [n]
+
+
+    )
+
 )
+
+
+
+
+(defn explode-to-digits [number]
+  "explode-to-digits takes an integer and returns a sequence of it's individual digits"
+  (map #(Character/getNumericValue %) (str number)))
+
+(defn splitter [n]
+  (partition 2 (explode-to-digits n))
+  )
+
+(splitter 11)
 
 (deftest main-test []
   (are [soln] soln
