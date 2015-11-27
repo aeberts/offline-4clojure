@@ -8,14 +8,12 @@
 (def __
 
   (fn [s]
-    "bar")
+    (-> s
+        (clojure.string/replace #"-\w" #(str (.toUpperCase %1)))
+        (clojure.string/replace #"-" "")
+        ))
+
 )
-
-(defn up [s]
-  (-> s
-      )
-  )
-
 
 (deftest main-test []
   (are [soln] soln
