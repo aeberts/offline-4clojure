@@ -10,8 +10,8 @@
                  [org.clojure/math.combinatorics "0.0.8"]
                  [thalia "0.1.0"]
                  [com.cemerick/pomegranate "0.3.0"]
-                 [org.clojure/tools.trace "0.7.8"]
-                 ]
+                 [org.clojure/tools.trace "0.7.8"]]
+
   :main  offline-4clojure.core
-  :profiles {:repl {:dependencies [[thalia "0.1.0"]]}}
-  )
+  :profiles {:repl {:dependencies [[thalia "0.1.0"]]}})
+

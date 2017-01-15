@@ -6,10 +6,10 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
-)
+  '(6 7 8)
+  )
 
 (deftest main-test []
-  (are [soln] soln
-(= __ (map #(+ % 5) '(1 2 3)))
-))
+                   (are [soln] soln
+                               (= __ (map #(+ % 5) '(1 2 3)))
+                               ))

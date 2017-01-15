@@ -6,7 +6,8 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+(fn [x]
+  (* 2 x))
 )
 
 (deftest main-test []

@@ -7,7 +7,8 @@
 
 (def __
 ;; your solution here
-)
+  (fn [s e]
+    (last (take (+ e 1) s))))
 
 (deftest main-test []
   (are [soln] soln

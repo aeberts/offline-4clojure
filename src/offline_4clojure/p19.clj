@@ -7,6 +7,8 @@
 
 (def __
 ;; your solution here
+  (fn [x]
+    (last x))
 )
 
 (deftest main-test []

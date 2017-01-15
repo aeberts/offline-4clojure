@@ -7,6 +7,8 @@
 
 (def __
 ;; your solution here
+(fn [w]
+  (apply str (re-seq #"[A-Z]+" w)))
 )
 
 (deftest main-test []

@@ -6,8 +6,7 @@
   (:use clojure.test))
 
 (def __
-  true
-  )
+  true )
 
 (deftest main-test []
   (are [soln] soln
