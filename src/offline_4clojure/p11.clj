@@ -1,15 +1,13 @@
 ;; Maps: conj - Elementary
 ;; When operating on a map, the conj function returns a new map with one or more key-value pairs "added".
-;; tags - 
-;; restricted - 
+;; tags -
+;; restricted -
 (ns offline-4clojure.p11
   (:use clojure.test))
 
 (def __
-  {:b 2}
-)
+  {:b 2})
 
 (deftest main-test []
   (are [soln] soln
-(= {:a 1, :b 2, :c 3} (conj {:a 1} __ [:c 3]))
-))
+    (= {:a 1, :b 2, :c 3} (conj {:a 1} __ [:c 3]))))

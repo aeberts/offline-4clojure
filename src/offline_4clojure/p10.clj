@@ -6,12 +6,10 @@
   (:use clojure.test))
 
 (def __
-  20
-)
+  20)
 
 (deftest main-test []
   (are [soln] soln
-(= __ ((hash-map :a 10, :b 20, :c 30) :b))
-(= __ (:b {:a 10, :b 20, :c 30}))
-))
+   (= __ ((hash-map :a 10, :b 20, :c 30) :b))
+   (= __ (:b {:a 10, :b 20, :c 30}))))
 
