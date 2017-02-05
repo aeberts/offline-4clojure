@@ -6,12 +6,13 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
-)
+  (fn [coll]
+    (filter (complement sequential?)
+            (tree-seq sequential? seq coll))))
 
 (deftest main-test []
   (are [soln] soln
-(= (__ '((1 2) 3 [4 [5 6]])) '(1 2 3 4 5 6))
-(= (__ ["a" ["b"] "c"]) '("a" "b" "c"))
-(= (__ '((((:a))))) '(:a))
-))
+    (= (__ '((1 2) 3 [4 [5 6]])) '(1 2 3 4 5 6))
+    (= (__ ["a" ["b"] "c"]) '("a" "b" "c"))
+    (= (__ '((((:a))))) '(:a))
+    ))

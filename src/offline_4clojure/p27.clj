@@ -7,7 +7,8 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+(fn [coll]
+  (= (seq coll) (reverse (seq coll))))
 )
 
 (deftest main-test []
