@@ -6,7 +6,12 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+  (fn compress [coll]
+    (when-let [[fst & rst] (seq coll)]
+      (if (= fst (first rst))
+        (compress rst)
+        (cons fst (compress rst))))
+    )
 )
 
 (deftest main-test []
