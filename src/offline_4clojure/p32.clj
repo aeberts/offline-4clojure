@@ -6,12 +6,7 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
-
-  (fn [c] (mapcat #(list % %) c ))
-)
-
-(def a [1 2 3 4 5])
+  (fn [c] (mapcat #(list % %) c )))
 
 (deftest main-test []
   (are [soln] soln
@@ -21,6 +16,6 @@
 (= (__ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4]))
 ))
 
-(def a {:1 "Learn React" :2 "Create To Do List App" :3 "Profit"})
+;; (def a {:1 "Learn React" :2 "Create To Do List App" :3 "Profit"})
 
 

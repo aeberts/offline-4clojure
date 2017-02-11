@@ -6,8 +6,8 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
-)
+(fn [coll n]
+  (mapcat #(repeat n %) coll)) )
 
 (deftest main-test []
   (are [soln] soln

@@ -6,7 +6,8 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+  (fn [coll]
+    (partition-by identity coll))
 )
 
 (deftest main-test []
