@@ -6,7 +6,7 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+  ;; Answer is [7 3 1] but this doesn't compile, why?
 )
 
 (deftest main-test []
