@@ -6,7 +6,8 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+  (fn [x coll]
+    (butlast (mapcat vector coll (repeat x))))
 )
 
 (deftest main-test []

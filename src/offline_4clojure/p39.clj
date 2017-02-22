@@ -5,9 +5,18 @@
 (ns offline-4clojure.p39
   (:use clojure.test))
 
+;; Solution using higher order functions
+
 (def __
-;; your solution here
-)
+  (fn [c1 c2]
+    (mapcat list c1 c2)))
+
+;; Recursive solution:
+;(def __
+;  (fn inter [c1 c2]
+;    (if (or (empty? c1) (empty? c2))
+;      '()
+;      (cons (first c1) (cons (first c2) (inter (rest c1) (rest c2)))))))
 
 (deftest main-test []
   (are [soln] soln
