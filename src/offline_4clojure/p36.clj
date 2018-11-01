@@ -6,7 +6,13 @@
   (:use clojure.test))
 
 (def __
-  ;; Answer is [7 3 1] but this doesn't compile, why?
+  ; solution is:
+  ;
+  ; [x 7 y 3 z 1]
+  ;
+  ; this works on 4clojure because the code you add to the text block, "fills in the blanks" for the
+  ; does not work in a stand-alone project because the vector syntax above which assigns x to 7, y to 3 and z to 1 only works in a let block
+  ;
 )
 
 (deftest main-test []
