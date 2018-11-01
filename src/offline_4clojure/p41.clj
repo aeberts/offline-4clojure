@@ -7,13 +7,14 @@
 
 ; Solution using "traditional" keep-indexed (could also use map-indexed)
 
-;(def __
-;  (fn [coll n]
-;    (keep-indexed
-;      (fn [idx itm]
-;        (if (not (= 0 (mod (inc idx) n)))
-;          itm))
-;      coll)))
+(comment
+  (def __
+    (fn [coll n]
+      (keep-indexed
+        (fn [idx itm]
+          (if (not (= 0 (mod (inc idx) n)))
+            itm))
+        coll))))
 
 ; Sexier solution using partition-all:
 
