@@ -6,7 +6,10 @@
   (:use clojure.test))
 
 (def __
-;; your solution here
+
+  (fn [x]
+    (reduce * (range 1 (+ 1 x)))
+    )
 )
 
 (deftest main-test []
