@@ -21,6 +21,11 @@
     )
   )
 
+; jafingerhut's solution:
+#_(fn [n c]
+  (let [n (mod n (count c))]
+    (concat (drop n c) (take n c))))
+
 (deftest main-test []
   (are [soln] soln
     (= (__ 2 [1 2 3 4 5]) '(3 4 5 1 2))
